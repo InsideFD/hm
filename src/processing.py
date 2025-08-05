@@ -4,6 +4,6 @@ def filter_by_state(operations: List[Dict], state: str = 'EXECUTED') -> List[Dic
     """Фильтрует операции по статусу"""
     return [op for op in operations if op.get('state') == state]
 
-def sort_by_date(operations: List[Dict], reverse: bool = True) -> List[Dict]:
+def sort_by_date(operations: List[Dict], ascending: bool = True) -> List[Dict]:
     """Сортирует операции по дате"""
-    return sorted(operations, key=lambda x: x['date'], reverse=reverse)
+    return sorted(operations, key=lambda x: x['date'], reverse=not ascending)
