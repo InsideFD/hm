@@ -1,5 +1,6 @@
 import pytest
 
+
 @pytest.fixture
 def test_operations():
     return [
@@ -8,6 +9,7 @@ def test_operations():
         {'id': 3, 'state': 'EXECUTED', 'date': '2023-01-02T12:00:00.000000'}
     ]
 
+
 @pytest.fixture
 def card_test_cases():
     return [
@@ -15,6 +17,7 @@ def card_test_cases():
         ("1234", "1234"),
         ("", "")
     ]
+
 
 @pytest.fixture
 def account_test_cases():

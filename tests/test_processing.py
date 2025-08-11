@@ -1,6 +1,7 @@
 import pytest
 from src.processing import filter_by_state, sort_by_date
 
+
 def test_filter_by_state(test_operations):
     # Фильтруем по EXECUTED
     filtered = filter_by_state(test_operations)
@@ -12,6 +13,7 @@ def test_filter_by_state(test_operations):
     filtered = filter_by_state(test_operations, 'CANCELED')
     assert len(filtered) == 1
     assert filtered[0]['id'] == 2
+
 
 @pytest.mark.parametrize("ascending, expected_order", [
     (True, [2, 3, 1]),  # по возрастанию
