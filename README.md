@@ -36,3 +36,20 @@ pytest tests/
 Тесты используют параметризацию для проверки:
 - Корректных номеров карт/счетов
 - Некорректных данных (не цифры)
+
+
+## Модуль generators
+
+### Функции:
+
+#### `filter_by_currency(transactions, currency)`
+Фильтрует транзакции по валюте.
+
+```python
+usd_transactions = filter_by_currency(transactions, "USD")
+print(next(usd_transactions))
+```
+
+`transaction_descriptions(transactions)` - Генерирует описания транзакций.
+
+`card_number_generator(start, end)` - Генерирует номера карт в диапазоне.
