@@ -62,3 +62,22 @@ print(next(usd_transactions))
 `transaction_descriptions(transactions)` - Генерирует описания транзакций.
 
 `card_number_generator(start, end)` - Генерирует номера карт в диапазоне.
+
+## Модуль decorators
+
+### Декоратор `log`
+
+Декоратор для логирования работы функций.
+
+#### Использование:
+```python
+from src.decorators import log
+
+@log(filename="app.log")
+def my_function(x, y):
+    return x + y
+
+# Или для вывода в консоль:
+@log()
+def another_function():
+    return "result"
