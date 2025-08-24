@@ -14,3 +14,17 @@ dependencies = [
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+exclude = ["venv"]
+
+[flake8]
+max-line-length=119
+exclude= ".git,__pycache__,venv"
+ignore= "E203,W503"
+select= "E,F,W,C"
