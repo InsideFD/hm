@@ -70,7 +70,7 @@ print(next(usd_transactions))
 Декоратор для логирования работы функций.
 
 #### Использование:
-```python
+```
 from src.decorators import log
 
 @log(filename="app.log")
@@ -81,3 +81,14 @@ def my_function(x, y):
 @log()
 def another_function():
     return "result"
+```
+
+## Модуль utils
+- `read_json_file()` - чтение JSON-файла с транзакциями
+
+## Модуль external_api  
+- `convert_amount_to_rub()` - конвертация валют в рубли
+
+## Тестирование
+```bash
+pytest tests/ --cov=src/
