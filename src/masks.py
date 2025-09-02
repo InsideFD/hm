@@ -1,20 +1,53 @@
+from src.logging_config import setup_logger
+
+# Настройка логера для модуля masks
+logger = setup_logger(__name__, "masks.log")
+
+
 def get_mask_card_number(card_number: str) -> str:
     """
-    Маскирует номер карты:
-    - Для 16 цифр: возвращает в формате '1234 56** **** 3456'
-    - Для других случаев возвращает строку без изменений
+    Маскирует номер банковской карты.
     """
-    if len(card_number) == 16 and card_number.isdigit():
-        return f"{card_number[:4]} {card_number[4:6]}** **** {card_number[-4:]}"
-    return card_number
+    try:
+        if logger.handlers:
+            logger.debug(f"Маскировка номера карты: {card_number}")
+
+        if len(card_number) == 16 and card_number.isdigit():
+            result = f"{card_number[:4]} {card_number[4:6]}** **** {card_number[-4:]}"
+            if logger.handlers:
+                logger.info(f"Успешная маскировка карты: {card_number} -> {result}")
+            return result
+
+        if logger.handlers:
+            logger.warning(f"Некорректный номер карты для маскировки: {card_number}")
+        return card_number
+
+    except Exception as e:
+        if logger.handlers:
+            logger.error(f"Ошибка при маскировке карты {card_number}: {e}")
+        return card_number
 
 
 def get_mask_account(account_number: str) -> str:
     """
-    Маскирует номер счета:
-    - Всегда возвращает последние 4 цифры с префиксом **
-    - Если цифр меньше 4, все равно добавляет **
-    - Для пустой строки возвращает пустую строку
+    Маскирует номер счета.
     """
-    digits = ''.join(filter(str.isdigit, account_number))
-    return f"**{digits[-4:]}" if digits else account_number
+    try:
+        if logger.handlers:
+            logger.debug(f"Маскировка номера счета: {account_number}")
+
+        digits = ''.join(filter(str.isdigit, account_number))
+        if not digits:
+            if logger.handlers:
+                logger.warning(f"Номер счета не содержит цифр: {account_number}")
+            return account_number
+
+        result = f"**{digits[-4:]}"
+        if logger.handlers:
+            logger.info(f"Успешная маскировка счета: {account_number} -> {result}")
+        return result
+
+    except Exception as e:
+        if logger.handlers:
+            logger.error(f"Ошибка при маскировке счета {account_number}: {e}")
+        return account_number

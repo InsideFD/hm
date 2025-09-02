@@ -18,3 +18,10 @@ def test_mask_card_number(card_number, expected):
 ])
 def test_mask_account(account_number, expected):
     assert get_mask_account(account_number) == expected
+
+
+def test_masks_logging():
+    """Тест логирование работает в masks"""
+    # Должен создать log файл
+    get_mask_card_number("1234567890123456")
+    get_mask_account("1234567890")

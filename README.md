@@ -92,3 +92,8 @@ def another_function():
 ## Тестирование
 ```bash
 pytest tests/ --cov=src/
+```
+
+## Логирование
+
+Модули используют библиотеку `logging` для записи логов в папку `logs/`:
