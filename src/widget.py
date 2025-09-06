@@ -1,25 +1,17 @@
 from src.masks import get_mask_card_number, get_mask_account
 
+
 def mask_account_card(data: str) -> str:
     """
-    Маскирует номер карты или счета в строке, содержащей тип и номер.
-
-    Args:
-        data: Строка формата "Visa Platinum 7000792289606361" или "Счет 73654108430135874305"
-
-    Returns:
-        Строка с замаскированным номером карты или счета
-
-    Raises:
-        ValueError: Если строка не соответствует ожидаемому формату
+    Маскирует номер карты или счета в строке.
+    Если строка пустая или не содержит номера, возвращает как есть.
     """
+    if not data:
+        return data
+
     parts = data.split()
     if len(parts) < 2:
-        raise ValueError("Неверный формат входных данных")
-
-    # Проверяем, является ли последняя часть номером (только цифры)
-    if not parts[-1].isdigit():
-        raise ValueError("Номер карты/счета должен содержать только цифры")
+        return data
 
     if data.startswith("Счет"):
         account_number = parts[-1]
