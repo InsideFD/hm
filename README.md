@@ -97,3 +97,22 @@ pytest tests/ --cov=src/
 ## Логирование
 
 Модули используют библиотеку `logging` для записи логов в папку `logs/`:
+
+## Поддержка CSV и Excel файлов
+
+### Новые функции в модуле `file_reader`:
+
+#### `read_csv_file(file_path)`
+Чтение транзакций из CSV файла.
+
+```python
+from src.file_reader import read_csv_file
+transactions = read_csv_file('data/transactions.csv')
+```
+#### `read_excel_file(file_path)`
+Чтение транзакций из Excel файла.
+
+```python
+from src.file_reader import read_excel_file
+transactions = read_excel_file('data/transactions_excel.xlsx')
+```
