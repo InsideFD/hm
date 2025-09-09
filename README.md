@@ -116,3 +116,21 @@ transactions = read_csv_file('data/transactions.csv')
 from src.file_reader import read_excel_file
 transactions = read_excel_file('data/transactions_excel.xlsx')
 ```
+
+## Новая функциональность
+
+### Модуль operations:
+- `search_by_description()` - поиск транзакций по описанию с использованием regex
+- `count_operations_by_category()` - подсчет операций по категориям
+
+### Основной модуль main:
+Интерактивная программа для работы с банковскими транзакциями:
+- Чтение данных из JSON/CSV/Excel
+- Фильтрация по статусу
+- Сортировка по дате
+- Поиск по описанию
+- Отображение в удобном формате
+
+### Запуск программы:
+```bash
+python src/main.py
